@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <title>People Information</title>
+</h:head>
+<h:body>
+    <h1>Add Person</h1>
+    <h:form>
+        <h:panelGrid columns="2">
+            <h:outputLabel for="name" value="Name:"/>
+            <h:inputText id="name" value="#{personBean.newPerson.name}" required="true"/>
+
+            <h:outputLabel for="address" value="Address:"/>
+            <h:inputText id="address" value="#{personBean.newPerson.address}" required="true"/>
+
+            <h:outputLabel for="phoneNumber" value="Phone:"/>
+            <h:inputText id="phoneNumber" value="#{personBean.newPerson.phoneNumber}" required="true"/>
+        </h:panelGrid>
+
+        <h:commandButton value="Add Person" action="#{personBean.addPerson}"/>
+        <h:messages style="color:red;"/>
+    </h:form>
+
+    <h1>People List</h1>
+    <h:dataTable value="#{personBean.people}" var="person" border="1">
+        <h:column><f:facet name="header">Name</f:facet> #{person.name} </h:column>
+        <h:column><f:facet name="header">Address</f:facet> #{person.address} </h:column>
+        <h:column><f:facet name="header">Phone</f:facet> #{person.phoneNumber} </h:column>
+    </h:dataTable>
+</h:body>
+</html>
